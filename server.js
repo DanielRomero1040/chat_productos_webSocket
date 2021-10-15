@@ -42,15 +42,15 @@ io.on("connection", (socket)=>{
     getHistory();
     socket.on("data_client", (data)=>{
         const message = data;          
-        newChat.save(message).then(()=>{
-
+        newChat.save(message).then((data)=>{
+            console.log(data)
             const newChatHistory = newChat.getAll();
             newChatHistory.then((items)=>{
                 console.log(items)
                 return io.sockets.emit("message_back", items);
             });   
         }); 
-
+        
     })
 });
     
