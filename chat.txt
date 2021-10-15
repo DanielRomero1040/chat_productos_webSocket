@@ -1,3 +1,20 @@
 [
-  
+  {
+    "nombre": "Daniel",
+    "msn": "prueba del chat",
+    "date": "2021-10-15T18:34:43.555Z",
+    "id": "1"
+  },
+  {
+    "nombre": "Daniel",
+    "msn": "hola",
+    "date": "2021-10-15T18:34:53.996Z",
+    "id": "2"
+  },
+  {
+    "nombre": "Estefania",
+    "msn": "prueba",
+    "date": "2021-10-15T18:47:02.871Z",
+    "id": "3"
+  }
 ]

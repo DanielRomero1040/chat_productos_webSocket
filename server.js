@@ -32,6 +32,8 @@ const io = new Server(server);
 
 io.on("connection", (socket)=>{
     console.log("ususario conectado!");
+
+    //-------- Chat con socket ---------------
     const chatHistory = newChat.getAll();
 
     const getHistory = () =>{
@@ -48,6 +50,29 @@ io.on("connection", (socket)=>{
             newChatHistory.then((items)=>{
                 console.log(items)
                 return io.sockets.emit("message_back", items);
+            });   
+        }); 
+        
+    })
+
+    //-------- Tabla con socket ---------------
+
+    const productsHistory = newContainer.getAll();
+
+    const getHistoryProducts = () =>{
+        productsHistory.then((items)=>{
+            io.sockets.emit("products_back", items);
+        });
+    }
+    getHistoryProducts();
+    socket.on("products_client", (data)=>{
+        const message = data;          
+        newContainer.save(message).then((data)=>{
+            console.log(data)
+            const newProductsHistory = newContainer.getAll();
+            newProductsHistory.then((items)=>{
+                console.log(items)
+                return io.sockets.emit("products_back", items);
             });   
         }); 
         
